@@ -1,0 +1,26 @@
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: var(--science-blue);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
