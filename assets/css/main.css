@@ -982,9 +982,19 @@ header {
   }
   /*End Header */
   /*Hero */
+  .hero__content {
+    justify-content: center;
+    text-align: center;
+  }
   .hero__img {
     display: none;
   }
   /*End Hero */
+}
+
+@media screen and (max-width: 500px) {
+  .hero__title {
+    font-size: 3.2rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */
