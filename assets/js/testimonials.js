@@ -8,21 +8,33 @@ export default function testimonials() {
     const prevBtn = testimonialsSection.querySelector('.btn__testimonials__prev');
 
     const testimonials = testimonialContainer.querySelectorAll('.testimonial')
+    let testimonialsWidth, testimonialWidth;
     let testimonialIndex = 0;
     const gridGap = 25;
-    const testimonialsWidth = testimonialContainer.clientWidth;
-    const testimonialWidth = testimonials[testimonialIndex].clientWidth + gridGap
+    let nextLimit = getNextLimit();
 
-    const testimonialCountPerWrap = testimonialsWidth / testimonialWidth
-    let nextLimit = Math.floor(testimonials.length - testimonialCountPerWrap)
-    console.log(nextLimit)
 
-    const checkButtonStatus = () => {
-        if (nextLimit == 0) {
-            nextBtn.classList.add('disable');
-        }
+    window.addEventListener("resize", () => {
+        nextLimit = getNextLimit();
+    })
+    checkButtonStatus()
+    nextBtn.addEventListener('click', moveToNextSlide)
+    prevBtn.addEventListener('click', moveToPrevSlide)
+
+
+    function moveToNextSlide() {
+        if (!isContinue({ direction: true })) return;
+        testimonialIndex++;
+        testimonialContainer.style.transform = `translateX(${-testimonialWidth * testimonialIndex}px)`
+        testimonialContainer.style.transition = ".7s"
     }
 
+    function moveToPrevSlide() {
+        if (!isContinue({ direction: false })) return;
+        testimonialIndex--;
+        testimonialContainer.style.transform = `translateX(${-testimonialWidth * testimonialIndex}px)`
+        testimonialContainer.style.transition = ".7s"
+    }
 
     const isContinue = (args) => {
         if (args.direction) {
@@ -59,23 +71,28 @@ export default function testimonials() {
             }
         }
     }
-    const moveToNextSlide = () => {
-        if (!isContinue({ direction: true })) return;
-        testimonialIndex++;
-        testimonialContainer.style.transform = `translateX(${-testimonialWidth * testimonialIndex}px)`
-        testimonialContainer.style.transition = ".7s"
+
+    function getElementsWidth() {
+        return [testimonialContainer.clientWidth,
+            testimonials[testimonialIndex].clientWidth + gridGap
+        ]
     }
-    const moveToPrevSlide = () => {
-        if (!isContinue({ direction: false })) return;
-        testimonialIndex--;
-        testimonialContainer.style.transform = `translateX(${-testimonialWidth * testimonialIndex}px)`
-        testimonialContainer.style.transition = ".7s"
+
+    function getNextLimit() {
+        [testimonialsWidth, testimonialWidth] = getElementsWidth();
+        let testimonialCountPerWrap = testimonialsWidth / testimonialWidth
+        return Math.round(testimonials.length - testimonialCountPerWrap)
+    }
+
+    function checkButtonStatus() {
+        if (nextLimit == 0) {
+            nextBtn.classList.add('disable');
+        }
     }
 
 
-    nextBtn.addEventListener('click', moveToNextSlide)
-    prevBtn.addEventListener('click', moveToPrevSlide)
-    checkButtonStatus()
+
+
 };
 
 

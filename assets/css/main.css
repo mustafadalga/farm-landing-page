@@ -1004,6 +1004,11 @@ header {
     display: none;
   }
   /*End Hero */
+  /*Testimonials*/
+  .testimonial {
+    width: 50%;
+  }
+  /*End Testimonials*/
 }
 
 @media screen and (max-width: 768px) {
@@ -1032,9 +1037,36 @@ header {
     text-align: center;
   }
   /*End How Is Works*/
+  /*Testimonials*/
+  .testimonials__body::before, .testimonials__body::after {
+    background-color: transparent;
+  }
+  .testimonials__list {
+    padding-left: 1.5rem;
+  }
+  .testimonial {
+    width: calc(100% - 3rem);
+    word-wrap: break-word;
+  }
+  .testimonial:hover {
+    transform: initial;
+  }
+  /*End Testimonials*/
 }
 
 @media screen and (max-width: 500px) {
+  /*Global*/
+  .opportunities__title,
+  .invest__title,
+  .works__title,
+  .testimonials__title {
+    font-size: 3rem;
+  }
+  .invest__description,
+  .works__description {
+    font-size: 1.6rem;
+  }
+  /*End Global*/
   /*Hero*/
   .hero__title {
     font-size: 3.2rem;
@@ -1048,9 +1080,6 @@ header {
     max-height: 40rem;
     max-width: 10rem;
   }
-  .opportunities__title {
-    font-size: 3rem;
-  }
   .opportunity__icon {
     width: inherit;
   }
@@ -1059,11 +1088,8 @@ header {
   .invest__body {
     grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   }
-  .invest__title {
-    font-size: 3rem;
-  }
-  .invest__description {
-    font-size: 1.6rem;
+  .invest__item__title {
+    font-size: 2.4rem;
   }
   /*End Invest Section*/
   /*How Is Works*/
@@ -1077,6 +1103,9 @@ header {
   }
   .progressbar__step:not(:first-child)::before, .progressbar__step:not(:first-child)::after {
     width: 4rem;
+  }
+  .works__step_title {
+    font-size: 1.8rem;
   }
   /*End How Is Works*/
 }
@@ -1093,5 +1122,11 @@ header {
     height: 4rem;
   }
   /*End How Is Works*/
+  /*Testimonials */
+  .testimonial__profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  /*End Testimonials*/
 }
 /*# sourceMappingURL=main.css.map */
