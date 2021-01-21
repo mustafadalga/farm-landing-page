@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&display=swap');
+$black: #000000;
+$white: #ffffff;
+$fern: #66BB6A;
+$btn-bs: 1px 10px 30px -10px rgba(102,
+187,
+106,
+1);
+$outer-space: #263238;
+$alabaster: #f7f7f7;
+$limed-spruce: #324148;
+$lynch: #607D8B;
 *,
 *:before,
 *:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --fern: #66BB6A;
-    --btn-bs: 1px 10px 30px -10px rgba(102, 187, 106, 1);
-    --outer-space: #263238;
-    --alabaster: #f7f7f7;
 }
 
 html {
@@ -23,7 +25,7 @@ html {
 body {
     font-family: 'Chivo', sans-serif;
     font-size: 1.6rem;
-    color: var(--black);
+    color: $black;
 }
 
 ul {
@@ -33,7 +35,7 @@ ul {
 a {
     text-decoration: none;
     cursor: pointer;
-    color: var(--black);
+    color: $black;
 }
 
 img {
@@ -64,3 +66,5 @@ section {
     border-radius: .5rem;
     padding: 1.2rem;
 }
+
+@import 'mixins'

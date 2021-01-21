@@ -1,0 +1,44 @@
+@mixin btnShadow {
+    -webkit-box-shadow: $btn-bs;
+    -moz-box-shadow: $btn-bs;
+    box-shadow: $btn-bs;
+}
+
+@mixin btnHoverAnimate($defaultbgColor, $hoverBgColor, $hoverTextColor) {
+    /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+    display: inline-block;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $defaultbgColor;
+        z-index: -2;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: $hoverBgColor;
+        transition: all .3s;
+        z-index: -1;
+    }
+    &:hover {
+        color: $hoverTextColor;
+        &:before {
+            width: 100%;
+        }
+    }
+}

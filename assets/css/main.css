@@ -14,6 +14,8 @@
   --btn-bs: 1px 10px 30px -10px rgba(102, 187, 106, 1);
   --outer-space: #263238;
   --alabaster: #f7f7f7;
+  --limed-spruce: #324148;
+  --lynch: #607D8B;
 }
 
 html {
@@ -23,7 +25,7 @@ html {
 body {
   font-family: 'Chivo', sans-serif;
   font-size: 1.6rem;
-  color: var(--black);
+  color: #000000;
 }
 
 ul {
@@ -33,7 +35,7 @@ ul {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--black);
+  color: #000000;
 }
 
 img {
@@ -97,10 +99,15 @@ header {
 
 .menu__link {
   cursor: pointer;
+  transition: .2s all;
+}
+
+.menu__link:hover {
+  color: #66BB6A;
 }
 
 .menu__link.active {
-  color: var(--fern);
+  color: #66BB6A;
   font-weight: bold;
 }
 
@@ -111,11 +118,53 @@ header {
 }
 
 .btn__signup {
-  border: 1px solid var(--white);
+  border: 1px solid #ffffff;
   font-size: 1.6rem;
-  color: var(--white);
+  color: #ffffff;
+  /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
+.btn__signup:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -2;
+}
+
+.btn__signup:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #66BB6A;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn__signup:hover {
+  color: #ffffff;
+}
+
+.btn__signup:hover:before {
+  width: 100%;
+}
+
+/*End Header */
+/*End Hero */
 .hero {
   margin: auto;
   height: 100vh;
@@ -137,14 +186,54 @@ header {
 .hero__description {
   font-size: 1.8rem;
   margin: 2.5rem 0 5rem;
-  color: var(--outer-space);
+  color: #263238;
 }
 
-.btn__invest {
-  background-color: var(--fern);
-  color: var(--white);
+.btn__hero {
+  border: 1px solid #66BB6A;
+  color: #ffffff;
   font-size: 1.8rem;
-  box-shadow: var(--btn-bs);
+  box-shadow: 1px 10px 30px -10px #66bb6a;
+  /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn__hero:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #66BB6A;
+  z-index: -2;
+}
+
+.btn__hero:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #ffffff;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn__hero:hover {
+  color: #66BB6A;
+}
+
+.btn__hero:hover:before {
+  width: 100%;
 }
 
 .hero__img {
@@ -159,7 +248,7 @@ header {
   width: initial;
 }
 
-/*End Header */
+/*End Hero */
 /*Opportunities*/
 .opportunities {
   position: relative;
@@ -182,7 +271,7 @@ header {
   display: flex;
   flex-direction: column;
   padding-bottom: 5rem;
-  border-bottom: 2px solid var(--alabaster);
+  border-bottom: 2px solid #f7f7f7;
   margin-bottom: 4rem;
 }
 
@@ -194,37 +283,43 @@ header {
 
 .opportunities__title {
   font-size: 3.6rem;
-  color: var(--black);
+  color: #000000;
 }
 
 .opportunities__description {
   margin-top: 2.5rem;
   font-size: 1.8rem;
   font-weight: 400;
-  color: var(--outer-space);
+  color: #263238;
 }
 
 .opportunities__body {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
-  grid-template-rows: 32rem;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 2.5rem;
+  align-self: baseline;
 }
 
 .opportunity {
-  background-color: var(--white);
+  width: 30%;
+  background-color: #ffffff;
   border-radius: .5rem;
-  box-shadow: 0 2px 8px rgba(27, 31, 35, 0.15);
+  filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
   padding: 5rem 2.5rem 2.5rem;
+  transition: all 0.3s ease-out;
 }
 
 .opportunity.active {
-  background-color: var(--fern);
+  background-color: #66BB6A;
 }
 
 .opportunity.active .opportunity__title,
 .opportunity.active .opportunity__description {
-  color: var(--white);
+  color: #ffffff;
+}
+
+.opportunity:hover {
+  transform: translateY(-2rem);
 }
 
 .opportunity__icon {
@@ -234,15 +329,569 @@ header {
 
 .opportunity__title {
   font-size: 1.8rem;
-  color: var(--outer-space);
+  color: #263238;
   margin: 2.5rem 0;
 }
 
 .opportunity__description {
   font-size: 1.6rem;
   font-weight: 400;
-  color: var(--outer-space);
+  color: #263238;
 }
 
 /*End Opportunities*/
+/* Invest*/
+.invest {
+  margin: auto;
+}
+
+.invest__head {
+  max-width: 70rem;
+}
+
+.invest__title {
+  font-size: 3.6rem;
+}
+
+.invest__description {
+  margin-top: 1.5rem;
+  color: #324148;
+  font-size: 1.8rem;
+}
+
+.invest__body {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+  grid-gap: 2.5rem;
+}
+
+.invest__item {
+  padding: 2.5rem;
+}
+
+.invest__item:nth-child(1) {
+  background: url("../img/investments/invest-1.png") no-repeat center/cover;
+}
+
+.invest__item:nth-child(2) {
+  background: url("../img/investments/invest-2.png") no-repeat center/cover;
+}
+
+.invest__item__subtitle {
+  color: #66BB6A;
+  font-size: 1.4rem;
+  font-weight: 400;
+  position: relative;
+}
+
+.invest__item__subtitle::after {
+  position: absolute;
+  content: '';
+  top: 3rem;
+  left: 0;
+  width: 5.6rem;
+  height: 4px;
+  background-color: #ffffff;
+}
+
+.invest__item__body {
+  margin: 5rem 0 2.5rem;
+}
+
+.invest__item__title {
+  color: #ffffff;
+  font-size: 3.1rem;
+  max-width: 30rem;
+}
+
+.invest__item_description {
+  font-size: 1.6rem;
+  color: #ffffff;
+  max-width: 30rem;
+}
+
+.btn__invest {
+  color: #66BB6A;
+  display: inline-block;
+  width: 20rem;
+  text-align: center;
+  box-shadow: 1px 10px 30px -10px #66bb6a;
+  /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn__invest:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: -2;
+}
+
+.btn__invest:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #66BB6A;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn__invest:hover {
+  color: #ffffff;
+}
+
+.btn__invest:hover:before {
+  width: 100%;
+}
+
+/*End Invest*/
+/*End How Is Works*/
+.how-is-works {
+  background: url("../img/how-is-works-bg.png") no-repeat;
+  background-color: #66BB6A;
+  margin: auto;
+}
+
+.works__content {
+  max-width: 70rem;
+  margin: auto;
+  color: #ffffff;
+  padding: 0 1.5rem;
+}
+
+.works__head {
+  text-align: center;
+}
+
+.works__title {
+  font-size: 3.6rem;
+}
+
+.works__description {
+  margin-top: 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 3rem;
+}
+
+.works__body {
+  margin: 5rem 0 10rem;
+}
+
+.form_progressbar {
+  display: flex;
+  grid-column-gap: 13rem;
+}
+
+.progressbar__step {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 7.2rem;
+  height: 7.2rem;
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progressbar__step.active {
+  background-color: #ffffff;
+  color: #66BB6A;
+}
+
+.progressbar__step.active:not(:first-child)::after {
+  height: 5px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: progressBarStepAnimate 0.5s linear forwards;
+}
+
+.progressbar__step:not(:first-child)::before, .progressbar__step:not(:first-child)::after {
+  position: absolute;
+  content: '';
+  right: 100%;
+  width: 13rem;
+  height: 1px;
+  background-color: #ffffff;
+  pointer-events: none;
+}
+
+@keyframes progressBarStepAnimate {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.works__footer {
+  display: flex;
+  overflow: hidden;
+}
+
+.works__step__content {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  grid-gap: 2.5rem;
+  transition: .5s all linear;
+}
+
+.works__step_title {
+  font-size: 2.4rem;
+  flex: 5;
+}
+
+.works__step_description {
+  flex: 6;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+/*End How Is Works*/
+/*Testimonials*/
+.testimonials {
+  margin-top: 20rem;
+}
+
+.testimonials__head {
+  position: relative;
+  margin: auto;
+}
+
+.testimonials__quote {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 11rem;
+  width: auto;
+}
+
+.testimonials__title {
+  font-size: 3.6rem;
+  max-width: 45rem;
+}
+
+.testimonials__body {
+  margin: 8rem auto 4rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.testimonials__body::before, .testimonials__body::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  width: 10%;
+  background-color: #ffffff;
+  opacity: .5;
+  height: 100%;
+  z-index: 1;
+}
+
+.testimonials__body::before {
+  left: 0;
+  filter: drop-shadow(5rem 0 4rem #ffffff);
+}
+
+.testimonials__body::after {
+  right: 0;
+  filter: drop-shadow(-5rem 0 4rem #ffffff);
+}
+
+.testimonials__list {
+  display: flex;
+  grid-gap: 2.5rem;
+  position: relative;
+}
+
+.testimonial {
+  flex-shrink: 0;
+  width: 33%;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+  transition: transform .3s ease;
+}
+
+.testimonial:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.testimonial__profile {
+  display: flex;
+  grid-gap: 2.5rem;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.testimonial__img {
+  filter: drop-shadow(0 0 0.5rem #66BB6A);
+  width: 7.2rem;
+  height: 7.2rem;
+}
+
+.testimonial__img img {
+  width: initial;
+  max-width: initial;
+}
+
+.testimonial__name {
+  color: #66BB6A;
+}
+
+.testimonial__title {
+  color: #263238;
+}
+
+.testimonial__description {
+  margin-top: 5rem;
+  font-size: 1.8rem;
+  color: #324148;
+}
+
+.testimonials__footer {
+  margin: auto;
+}
+
+.testimonials__directions {
+  display: flex;
+  grid-gap: 1.5rem;
+}
+
+.btn__testimonials {
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 1.5rem;
+  outline: none;
+  border: none;
+  background-color: #66BB6A;
+  color: #ffffff;
+  box-shadow: 1px 10px 30px -10px #66bb6a;
+}
+
+.btn__testimonials.disable {
+  background-color: #ffffff;
+  color: #263238;
+}
+
+/*End Testimonials*/
+/*Farm Invest */
+.farm-invest {
+  margin: auto;
+  text-align: center;
+  background-color: #ffffff;
+  filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+  margin-bottom: 10rem;
+}
+
+.farm-invest__title {
+  font-size: 3.6rem;
+}
+
+.farm-invest__title span {
+  color: #66BB6A;
+}
+
+.btn__farm--invest {
+  border: 1px solid #66BB6A;
+  color: #ffffff;
+  display: inline-block;
+  min-width: 25rem;
+  margin-top: 4rem;
+  box-shadow: 1px 10px 30px -10px #66bb6a;
+  /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn__farm--invest:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #66BB6A;
+  z-index: -2;
+}
+
+.btn__farm--invest:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #ffffff;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn__farm--invest:hover {
+  color: #66BB6A;
+}
+
+.btn__farm--invest:hover:before {
+  width: 100%;
+}
+
+/*End Farm Invest*/
+/*Footer*/
+.footer {
+  position: relative;
+}
+
+.footer__body {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 2.5rem;
+  align-items: baseline;
+  padding-bottom: 5rem;
+  border-bottom: 2px solid #f7f7f7;
+}
+
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 9 2 auto;
+}
+
+.footer_nav__menu {
+  flex-basis: 33%;
+}
+
+.footer_nav__item {
+  padding: 1rem 2.5rem;
+}
+
+.footer_nav__menu__title {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+
+.footer_nav__link {
+  font-size: 1.6rem;
+  color: #607D8B;
+  transition: .2s all;
+}
+
+.footer_nav__link:hover {
+  color: #66BB6A;
+}
+
+.footer__contact {
+  flex: 1 0 28rem;
+  background-color: #66BB6A;
+  padding: 5rem 5rem 10rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer__contact > * {
+  max-width: 16rem;
+}
+
+.footer__contact__title {
+  margin-bottom: 1.5rem;
+}
+
+.email {
+  color: #ffffff;
+}
+
+.btn__signin {
+  margin-top: 1.5rem;
+  border: 1px solid #ffffff;
+  color: #66BB6A;
+  /*
+    Button hover effect resource
+    https://codepen.io/alticreation/pen/zBZwOP
+    */
+  display: inline-block;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn__signin:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: -2;
+}
+
+.btn__signin:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #66BB6A;
+  transition: all .3s;
+  z-index: -1;
+}
+
+.btn__signin:hover {
+  color: #ffffff;
+}
+
+.btn__signin:hover:before {
+  width: 100%;
+}
+
+.footer__bottom__content {
+  margin-top: 5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 5rem auto 0;
+  padding-bottom: 10rem;
+}
+
+.footer_copyright {
+  color: #607D8B;
+  font-size: 1.4rem;
+}
+
+.footer_img {
+  position: absolute;
+  bottom: 0;
+  right: -1.5rem;
+  max-width: 50rem;
+}
+
+/*End Footer*/
 /*# sourceMappingURL=main.css.map */

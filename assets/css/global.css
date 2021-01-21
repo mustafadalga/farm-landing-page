@@ -7,15 +7,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --fern: #66BB6A;
-  --btn-bs: 1px 10px 30px -10px rgba(102, 187, 106, 1);
-  --outer-space: #263238;
-  --alabaster: #f7f7f7;
-}
-
 html {
   font-size: 10px;
 }
@@ -23,7 +14,7 @@ html {
 body {
   font-family: 'Chivo', sans-serif;
   font-size: 1.6rem;
-  color: var(--black);
+  color: #000000;
 }
 
 ul {
@@ -33,7 +24,7 @@ ul {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--black);
+  color: #000000;
 }
 
 img {
