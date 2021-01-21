@@ -992,9 +992,42 @@ header {
   /*End Hero */
 }
 
+@media screen and (max-width: 768px) {
+  /* Opportunities*/
+  .opportunity {
+    width: 100%;
+  }
+  /*End Opportunities*/
+}
+
 @media screen and (max-width: 500px) {
+  /*Hero*/
   .hero__title {
     font-size: 3.2rem;
   }
+  /*End Hero*/
+  /*Opportunities*/
+  .opportunities__img {
+    top: -8rem;
+  }
+  .opportunities__img img {
+    max-height: 40rem;
+    max-width: 10rem;
+  }
+  .opportunities__title {
+    font-size: 3rem;
+  }
+  .opportunity__icon {
+    width: inherit;
+  }
+  /*End Opportunities*/
+  /*Invest Section*/
+  .invest__title {
+    font-size: 3rem;
+  }
+  .invest__description {
+    font-size: 1.6rem;
+  }
+  /*End Invest Section*/
 }
 /*# sourceMappingURL=main.css.map */
