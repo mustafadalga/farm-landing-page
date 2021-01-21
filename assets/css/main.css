@@ -599,6 +599,20 @@ header {
   display: flex;
   grid-gap: 2.5rem;
   transition: .5s all linear;
+  padding: 3rem;
+  position: relative;
+  align-items: center;
+}
+
+.works__step__content::before {
+  position: absolute;
+  content: '';
+  left: 1.5rem;
+  top: 1.5rem;
+  width: calc(100% - 3rem);
+  height: calc(100% - 3rem);
+  box-shadow: 0 1px 6px black;
+  border-radius: .8rem;
 }
 
 .works__step_title {
@@ -998,6 +1012,26 @@ header {
     width: 100%;
   }
   /*End Opportunities*/
+  /*How Is Works*/
+  .form_progressbar {
+    grid-column-gap: 7rem;
+    justify-content: center;
+  }
+  .progressbar__step {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+  .progressbar__step:not(:first-child)::before, .progressbar__step:not(:first-child)::after {
+    width: 7rem;
+  }
+  .works__step__content {
+    flex-direction: column;
+  }
+  .works__step_title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  /*End How Is Works*/
 }
 
 @media screen and (max-width: 500px) {
@@ -1022,6 +1056,9 @@ header {
   }
   /*End Opportunities*/
   /*Invest Section*/
+  .invest__body {
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  }
   .invest__title {
     font-size: 3rem;
   }
@@ -1029,5 +1066,32 @@ header {
     font-size: 1.6rem;
   }
   /*End Invest Section*/
+  /*How Is Works*/
+  .form_progressbar {
+    grid-column-gap: 4rem;
+    justify-content: center;
+  }
+  .progressbar__step {
+    width: 4.8rem;
+    height: 4.8rem;
+  }
+  .progressbar__step:not(:first-child)::before, .progressbar__step:not(:first-child)::after {
+    width: 4rem;
+  }
+  /*End How Is Works*/
+}
+
+@media screen and (max-width: 360px) {
+  /*Invest Section*/
+  .invest__body {
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  }
+  /*End Invest Section*/
+  /*How Is Works*/
+  .progressbar__step {
+    width: 4rem;
+    height: 4rem;
+  }
+  /*End How Is Works*/
 }
 /*# sourceMappingURL=main.css.map */
