@@ -7,17 +7,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --black: #000000;
-  --white: #ffffff;
-  --fern: #66BB6A;
-  --btn-bs: 1px 10px 30px -10px rgba(102, 187, 106, 1);
-  --outer-space: #263238;
-  --alabaster: #f7f7f7;
-  --limed-spruce: #324148;
-  --lynch: #607D8B;
-}
-
 html {
   font-size: 10px;
 }
@@ -73,7 +62,7 @@ header {
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .header__nav {
@@ -89,6 +78,16 @@ header {
 
 .header__logo img {
   max-width: 12rem;
+}
+
+.header__nav__content {
+  flex: 8;
+  display: flex;
+  align-items: center;
+}
+
+.header__nav__content.open {
+  transform: translateX(0);
 }
 
 .header__menu {
@@ -161,6 +160,57 @@ header {
 
 .btn__signup:hover:before {
   width: 100%;
+}
+
+.hamburger-menu-wrap {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  cursor: pointer;
+  z-index: 1;
+  display: none;
+}
+
+.hamburger-menu {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  grid-row-gap: .2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+}
+
+.hamburger-menu .line {
+  background-color: #66BB6A;
+  height: .3rem;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.nav-close-icon {
+  position: relative;
+  padding: 3rem 2rem;
+  height: 2.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-close-icon:before, .nav-close-icon:after {
+  position: absolute;
+  content: '';
+  width: 4px;
+  right: 4rem;
+  height: 40%;
+  background-color: #ffffff;
+}
+
+.nav-close-icon:before {
+  transform: rotateZ(45deg) translate(0.5rem, -1rem);
+}
+
+.nav-close-icon:after {
+  transform: rotateZ(-45deg) translate(1rem, 0.5rem);
 }
 
 /*End Header */
@@ -894,4 +944,47 @@ header {
 }
 
 /*End Footer*/
+@media screen and (max-width: 950px) {
+  /*Header */
+  .hamburger-menu-wrap,
+  .nav-close-icon {
+    display: block;
+  }
+  .header__nav__content {
+    flex: initial;
+    align-items: initial;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30rem;
+    height: 100vh;
+    background-color: #66BB6A;
+    z-index: 2;
+    flex-direction: column;
+    transform: translateX(40rem);
+    transition: transform 0.3s ease-in-out;
+    grid-gap: 2.5rem;
+  }
+  .header__menu {
+    flex-direction: column;
+    flex: initial;
+    align-items: center;
+  }
+  .menu__link {
+    color: #ffffff;
+  }
+  .menu__link:hover, .menu__link.active {
+    color: #ffffff;
+  }
+  .header__signup {
+    flex: initial;
+    justify-content: center;
+  }
+  /*End Header */
+  /*Hero */
+  .hero__img {
+    display: none;
+  }
+  /*End Hero */
+}
 /*# sourceMappingURL=main.css.map */
