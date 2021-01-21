@@ -760,6 +760,7 @@ header {
 /*Farm Invest */
 .farm-invest {
   margin: auto;
+  padding: 5rem 2.5rem;
   text-align: center;
   background-color: #ffffff;
   filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
@@ -1059,7 +1060,8 @@ header {
   .opportunities__title,
   .invest__title,
   .works__title,
-  .testimonials__title {
+  .testimonials__title,
+  .farm-invest__title {
     font-size: 3rem;
   }
   .invest__description,
@@ -1108,6 +1110,11 @@ header {
     font-size: 1.8rem;
   }
   /*End How Is Works*/
+  /*Testimonials*/
+  .testimonials {
+    margin-top: 10rem;
+  }
+  /*End Testimonials*/
 }
 
 @media screen and (max-width: 360px) {
@@ -1128,5 +1135,11 @@ header {
     text-align: center;
   }
   /*End Testimonials*/
+  /*Farm Invest*/
+  .btn__farm--invest {
+    width: 80%;
+    min-width: initial;
+  }
+  /*End Farm Invest*/
 }
 /*# sourceMappingURL=main.css.map */
