@@ -844,6 +844,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   flex: 9 2 auto;
+  grid-row-gap: 2.5rem;
 }
 
 .footer_nav__menu {
@@ -949,6 +950,7 @@ header {
 .footer_copyright {
   color: #607D8B;
   font-size: 1.4rem;
+  text-align: center;
 }
 
 .footer_img {
@@ -1053,6 +1055,16 @@ header {
     transform: initial;
   }
   /*End Testimonials*/
+  /*Footer*/
+  .footer_nav__menu {
+    text-align: center;
+  }
+  .footer__bottom__content {
+    flex-direction: column;
+    grid-row-gap: 4.5rem;
+    align-items: center;
+  }
+  /*end Footer*/
 }
 
 @media screen and (max-width: 500px) {
@@ -1115,6 +1127,14 @@ header {
     margin-top: 10rem;
   }
   /*End Testimonials*/
+  /*Footer*/
+  .footer_nav__menu {
+    text-align: left;
+  }
+  .footer__contact {
+    width: 100%;
+  }
+  /*End Footer*/
 }
 
 @media screen and (max-width: 360px) {

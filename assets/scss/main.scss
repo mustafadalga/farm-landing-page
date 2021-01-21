@@ -1,892 +1,732 @@
-                    @import "global";
-                    /*Header */
-                    
-                    header {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        width: 100%;
-                        z-index: 2;
-                    }
-                    
-                    .header__nav {
-                        padding: 2rem 1.5rem;
-                        margin: auto;
-                        display: flex;
-                        align-items: center;
-                    }
-                    
-                    .header__logo {
-                        flex: 2;
-                        img {
-                            max-width: 12rem;
-                        }
-                    }
-                    
-                    .header__nav__content {
-                        flex: 8;
-                        display: flex;
-                        align-items: center;
-                        &.open {
-                            transform: translateX(0);
-                        }
-                    }
-                    
-                    .header__menu {
-                        flex: 4;
-                        display: flex;
-                        grid-gap: 2.5rem;
-                    }
-                    
-                    .menu__link {
-                        cursor: pointer;
-                        transition: .2s all;
-                        &:hover {
-                            color: $fern;
-                        }
-                        &.active {
-                            color: $fern;
-                            font-weight: bold;
-                        }
-                    }
-                    
-                    .header__signup {
-                        flex: 4;
-                        display: flex;
-                        justify-content: flex-end;
-                    }
-                    
-                    .btn__signup {
-                        border: 1px solid $white;
-                        font-size: 1.6rem;
-                        color: $white;
-                        @include btnHoverAnimate(transparent, $fern, $white);
-                    }
-                    
-                    .hamburger-menu-wrap {
-                        position: absolute;
-                        top: 3rem;
-                        right: 2rem;
-                        cursor: pointer;
-                        z-index: 1;
-                        display: none;
-                    }
-                    
-                    .hamburger-menu {
-                        width: 2rem;
-                        height: 2rem;
-                        display: flex;
-                        grid-row-gap: .2rem;
-                        flex-wrap: wrap;
-                        align-items: center;
-                        position: relative;
-                    }
-                    
-                    .hamburger-menu .line {
-                        background-color: $fern;
-                        height: .3rem;
-                        width: 100%;
-                        -webkit-transition: all 0.3s;
-                        transition: all 0.3s;
-                    }
-                    
-                    .nav-close-icon {
-                        position: relative;
-                        padding: 3rem 2rem;
-                        height: 2.5rem;
-                        cursor: pointer;
-                        display: none;
-                        &:before,
-                        &:after {
-                            position: absolute;
-                            content: '';
-                            width: 4px;
-                            right: 4rem;
-                            height: 40%;
-                            background-color: $white;
-                        }
-                        &:before {
-                            -webkit-transform: rotateZ(45deg);
-                            transform: rotateZ(45deg) translate(0.5rem, -1rem);
-                        }
-                        &:after {
-                            -webkit-transform: rotateZ(-45deg);
-                            transform: rotateZ(-45deg) translate(1rem, 0.5rem);
-                        }
-                    }
-                    /*End Header */
-                    /*End Hero */
-                    
-                    .hero {
-                        margin: auto;
-                        height: 100vh;
-                    }
-                    
-                    .hero__content {
-                        display: flex;
-                    }
-                    
-                    .hero__text {
-                        margin-top: 10rem;
-                        max-width: 50rem;
-                    }
-                    
-                    .hero__title {
-                        font-size: 4.6rem;
-                    }
-                    
-                    .hero__description {
-                        font-size: 1.8rem;
-                        margin: 2.5rem 0 5rem;
-                        color: $outer-space;
-                    }
-                    
-                    .btn__hero {
-                        border: 1px solid $fern;
-                        color: $white;
-                        font-size: 1.8rem;
-                        @include btnShadow;
-                        @include btnHoverAnimate($fern, $white, $fern)
-                    }
-                    
-                    .hero__img {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        z-index: -1;
-                        img {
-                            max-height: 100vh;
-                            width: initial;
-                        }
-                    }
-                    /*End Hero */
-                    /*Opportunities*/
-                    
-                    .opportunities {
-                        position: relative;
-                    }
-                    
-                    .opportunities__img {
-                        position: absolute;
-                        left: -1.5rem;
-                        top: -16rem;
-                        z-index: -1;
-                        img {
-                            max-height: 55rem;
-                            max-width: 16rem;
-                        }
-                    }
-                    
-                    .opportunities__content {
-                        margin: auto;
-                        display: flex;
-                        flex-direction: column;
-                        padding-bottom: 5rem;
-                        border-bottom: 2px solid $alabaster;
-                        margin-bottom: 4rem;
-                    }
-                    
-                    .opportunities__head {
-                        text-align: center;
-                        max-width: 70rem;
-                        margin: 0 auto 10rem;
-                    }
-                    
-                    .opportunities__title {
-                        font-size: 3.6rem;
-                        color: $black;
-                    }
-                    
-                    .opportunities__description {
-                        margin-top: 2.5rem;
-                        font-size: 1.8rem;
-                        font-weight: 400;
-                        color: $outer-space;
-                    }
-                    
-                    .opportunities__body {
-                        display: flex;
-                        flex-wrap: wrap;
-                        grid-gap: 2.5rem;
-                        align-self: baseline;
-                    }
-                    
-                    .opportunity {
-                        width: 30%;
-                        background-color: $white;
-                        border-radius: .5rem;
-                        filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
-                        padding: 5rem 2.5rem 2.5rem;
-                        transition: all 0.3s ease-out;
-                        &.active {
-                            background-color: $fern;
-                            .opportunity__title,
-                            .opportunity__description {
-                                color: $white;
-                            }
-                        }
-                        &:hover {
-                            transform: translateY(-2rem);
-                        }
-                    }
-                    
-                    .opportunity__icon {
-                        max-height: 5.6rem;
-                        width: initial;
-                    }
-                    
-                    .opportunity__title {
-                        font-size: 1.8rem;
-                        color: $outer-space;
-                        margin: 2.5rem 0;
-                    }
-                    
-                    .opportunity__description {
-                        font-size: 1.6rem;
-                        font-weight: 400;
-                        color: $outer-space;
-                    }
-                    /*End Opportunities*/
-                    /* Invest*/
-                    
-                    .invest {
-                        margin: auto;
-                    }
-                    
-                    .invest__head {
-                        max-width: 70rem;
-                    }
-                    
-                    .invest__title {
-                        font-size: 3.6rem;
-                    }
-                    
-                    .invest__description {
-                        margin-top: 1.5rem;
-                        color: $limed-spruce;
-                        font-size: 1.8rem
-                    }
-                    
-                    .invest__body {
-                        margin-top: 5rem;
-                        display: grid;
-                        grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
-                        grid-gap: 2.5rem;
-                    }
-                    
-                    .invest__item {
-                        padding: 2.5rem;
-                        &:nth-child(1) {
-                            background: url('../img/investments/invest-1.png') no-repeat center/cover;
-                        }
-                        &:nth-child(2) {
-                            background: url('../img/investments/invest-2.png') no-repeat center/cover;
-                        }
-                    }
-                    
-                    .invest__item__subtitle {
-                        color: $fern;
-                        font-size: 1.4rem;
-                        font-weight: 400;
-                        position: relative;
-                        &::after {
-                            position: absolute;
-                            content: '';
-                            top: 3rem;
-                            left: 0;
-                            width: 5.6rem;
-                            height: 4px;
-                            background-color: $white;
-                        }
-                    }
-                    
-                    .invest__item__body {
-                        margin: 5rem 0 2.5rem;
-                    }
-                    
-                    .invest__item__title {
-                        color: $white;
-                        font-size: 3.1rem;
-                        max-width: 30rem;
-                    }
-                    
-                    .invest__item_description {
-                        font-size: 1.6rem;
-                        color: $white;
-                        max-width: 30rem;
-                    }
-                    
-                    .btn__invest {
-                        color: $fern;
-                        display: inline-block;
-                        width: 20rem;
-                        text-align: center;
-                        @include btnShadow;
-                        @include btnHoverAnimate($white,
-                        $fern,
-                        $white);
-                    }
-                    /*End Invest*/
-                    /*End How Is Works*/
-                    
-                    .how-is-works {
-                        background: url('../img/how-is-works-bg.png') no-repeat;
-                        background-color: $fern;
-                        margin: auto;
-                    }
-                    
-                    .works__content {
-                        max-width: 70rem;
-                        margin: auto;
-                        color: $white;
-                        padding: 0 1.5rem;
-                    }
-                    
-                    .works__head {
-                        text-align: center;
-                    }
-                    
-                    .works__title {
-                        font-size: 3.6rem;
-                    }
-                    
-                    .works__description {
-                        margin-top: 2.5rem;
-                        font-size: 1.8rem;
-                        font-weight: 400;
-                        line-height: 3rem;
-                    }
-                    
-                    .works__body {
-                        margin: 5rem 0 10rem;
-                    }
-                    
-                    .form_progressbar {
-                        display: flex;
-                        grid-column-gap: 13rem;
-                    }
-                    
-                    .progressbar__step {
-                        cursor: pointer;
-                        border-radius: 50%;
-                        width: 7.2rem;
-                        height: 7.2rem;
-                        border: 1px solid $white;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        position: relative;
-                        &.active {
-                            background-color: $white;
-                            color: $fern;
-                            &:not(:first-child)::after {
-                                height: 5px;
-                                transform: scaleX(0);
-                                transform-origin: left;
-                                animation: progressBarStepAnimate 0.5s linear forwards;
-                            }
-                        }
-                        &:not(:first-child) {
-                            &::before,
-                            &::after {
-                                position: absolute;
-                                content: '';
-                                right: 100%;
-                                width: 13rem;
-                                height: 1px;
-                                background-color: $white;
-                                pointer-events: none;
-                            }
-                        }
-                    }
-                    
-                    @keyframes progressBarStepAnimate {
-                        100% {
-                            transform: scaleX(1);
-                        }
-                    }
-                    
-                    .works__footer {
-                        display: flex;
-                        overflow: hidden;
-                    }
-                    
-                    .works__step__content {
-                        flex-shrink: 0;
-                        width: 100%;
-                        display: flex;
-                        grid-gap: 2.5rem;
-                        transition: .5s all linear;
-                        padding: 3rem;
-                        position: relative;
-                        align-items: center;
-                        &::before {
-                            position: absolute;
-                            content: '';
-                            left: 1.5rem;
-                            top: 1.5rem;
-                            width: calc(100% - 3rem);
-                            height: calc(100% - 3rem);
-                            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 75%);
-                            box-shadow: 0 1px 6px rgba(0, 0, 0, 75%);
-                            border-radius: .8rem;
-                            // background-color: red;
-                        }
-                    }
-                    
-                    .works__step_title {
-                        font-size: 2.4rem;
-                        flex: 5;
-                    }
-                    
-                    .works__step_description {
-                        flex: 6;
-                        font-size: 1.6rem;
-                        font-weight: 400;
-                    }
-                    /*End How Is Works*/
-                    /*Testimonials*/
-                    
-                    .testimonials {
-                        margin-top: 20rem;
-                    }
-                    
-                    .testimonials__head {
-                        position: relative;
-                        margin: auto;
-                    }
-                    
-                    .testimonials__quote {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        max-height: 11rem;
-                        width: auto;
-                    }
-                    
-                    .testimonials__title {
-                        font-size: 3.6rem;
-                        max-width: 45rem;
-                    }
-                    
-                    .testimonials__body {
-                        margin: 8rem auto 4rem;
-                        width: 100%;
-                        overflow: hidden;
-                        padding: 2rem 0;
-                        position: relative;
-                        &::before,
-                        &::after {
-                            position: absolute;
-                            content: '';
-                            top: 0;
-                            width: 10%;
-                            background-color: $white;
-                            opacity: .5;
-                            height: 100%;
-                            z-index: 1;
-                        }
-                        &::before {
-                            left: 0;
-                            filter: drop-shadow(5rem 0 4rem $white);
-                        }
-                        &::after {
-                            right: 0;
-                            filter: drop-shadow(-5rem 0 4rem $white);
-                        }
-                    }
-                    
-                    .testimonials__list {
-                        display: flex;
-                        grid-gap: 2.5rem;
-                        position: relative;
-                    }
-                    
-                    .testimonial {
-                        flex-shrink: 0;
-                        width: 33%;
-                        padding: 2.5rem;
-                        background-color: $white;
-                        filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
-                        transition: transform .3s ease;
-                        &:hover {
-                            transform: scale(1.1);
-                            z-index: 1;
-                        }
-                    }
-                    
-                    .testimonial__profile {
-                        display: flex;
-                        grid-gap: 2.5rem;
-                        align-items: center;
-                        font-size: 1.8rem;
-                    }
-                    
-                    .testimonial__img {
-                        filter: drop-shadow(0 0 0.5rem $fern);
-                        width: 7.2rem;
-                        height: 7.2rem;
-                        img {
-                            width: initial;
-                            max-width: initial;
-                        }
-                    }
-                    
-                    .testimonial__name {
-                        color: $fern;
-                    }
-                    
-                    .testimonial__title {
-                        color: $outer-space;
-                    }
-                    
-                    .testimonial__description {
-                        margin-top: 5rem;
-                        font-size: 1.8rem;
-                        color: $limed-spruce;
-                    }
-                    
-                    .testimonials__footer {
-                        margin: auto;
-                    }
-                    
-                    .testimonials__directions {
-                        display: flex;
-                        grid-gap: 1.5rem;
-                    }
-                    
-                    .btn__testimonials {
-                        border-radius: 50%;
-                        cursor: pointer;
-                        padding: 1.5rem;
-                        outline: none;
-                        border: none;
-                        background-color: $fern;
-                        color: $white;
-                        @include btnShadow;
-                        &.disable {
-                            background-color: $white;
-                            color: $outer-space;
-                        }
-                    }
-                    /*End Testimonials*/
-                    /*Farm Invest */
-                    
-                    .farm-invest {
-                        margin: auto;
-                        padding: 5rem 2.5rem;
-                        text-align: center;
-                        background-color: $white;
-                        filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
-                        margin-bottom: 10rem;
-                    }
-                    
-                    .farm-invest__title {
-                        font-size: 3.6rem;
-                        span {
-                            color: $fern;
-                        }
-                    }
-                    
-                    .btn__farm--invest {
-                        border: 1px solid $fern;
-                        color: $white;
-                        display: inline-block;
-                        min-width: 25rem;
-                        margin-top: 4rem;
-                        @include btnShadow;
-                        @include btnHoverAnimate($fern,
-                        $white,
-                        $fern);
-                    }
-                    /*End Farm Invest*/
-                    /*Footer*/
-                    
-                    .footer {
-                        position: relative;
-                    }
-                    
-                    .footer__body {
-                        margin: auto;
-                        display: flex;
-                        flex-wrap: wrap;
-                        grid-gap: 2.5rem;
-                        align-items: baseline;
-                        padding-bottom: 5rem;
-                        border-bottom: 2px solid $alabaster;
-                    }
-                    
-                    .footer__nav {
-                        display: flex;
-                        flex-wrap: wrap;
-                        flex: 9 2 auto;
-                    }
-                    
-                    .footer_nav__menu {
-                        flex-basis: 33%;
-                    }
-                    
-                    .footer_nav__item {
-                        padding: 1rem 2.5rem;
-                    }
-                    
-                    .footer_nav__menu__title {
-                        font-size: 1.6rem;
-                        text-transform: uppercase;
-                    }
-                    
-                    .footer_nav__link {
-                        font-size: 1.6rem;
-                        color: $lynch;
-                        transition: .2s all;
-                        &:hover {
-                            color: $fern;
-                        }
-                    }
-                    
-                    .footer__contact {
-                        flex: 1 0 28rem;
-                        background-color: $fern;
-                        padding: 5rem 5rem 10rem;
-                        color: $white;
-                        display: flex;
-                        align-items: center;
-                        flex-direction: column;
-                        &>* {
-                            max-width: 16rem;
-                        }
-                    }
-                    
-                    .footer__contact__title {
-                        margin-bottom: 1.5rem;
-                    }
-                    
-                    .email {
-                        color: $white;
-                    }
-                    
-                    .btn__signin {
-                        margin-top: 1.5rem;
-                        border: 1px solid $white;
-                        color: $fern;
-                        @include btnHoverAnimate($white,
-                        $fern,
-                        $white);
-                    }
-                    
-                    .footer__bottom__content {
-                        margin-top: 5rem;
-                        display: flex;
-                        align-items: baseline;
-                        justify-content: space-between;
-                        margin: 5rem auto 0;
-                        padding-bottom: 10rem;
-                    }
-                    
-                    .footer_copyright {
-                        color: $lynch;
-                        font-size: 1.4rem;
-                    }
-                    
-                    .footer_img {
-                        position: absolute;
-                        bottom: 0;
-                        right: -1.5rem;
-                        max-width: 50rem;
-                    }
-                    /*End Footer*/
-                    
-                    @import 'mediaQueries';
-                    @media screen and (max-width:950px) {
-                        /*Header */
-                        .hamburger-menu-wrap,
-                        .nav-close-icon {
-                            display: block;
-                        }
-                        .header__nav__content {
-                            flex: initial;
-                            align-items: initial;
-                            position: fixed;
-                            top: 0;
-                            right: 0;
-                            width: 30rem;
-                            height: 100vh;
-                            background-color: $fern;
-                            z-index: 2;
-                            flex-direction: column;
-                            transform: translateX(40rem);
-                            transition: transform 0.3s ease-in-out;
-                            grid-gap: 2.5rem;
-                        }
-                        .header__menu {
-                            flex-direction: column;
-                            flex: initial;
-                            align-items: center;
-                        }
-                        .menu__link {
-                            color: $white;
-                            &:hover,
-                            &.active {
-                                color: $white;
-                            }
-                        }
-                        .header__signup {
-                            flex: initial;
-                            justify-content: center;
-                        }
-                        /*End Header */
-                        /*Hero */
-                        .hero__content {
-                            justify-content: center;
-                            text-align: center;
-                        }
-                        .hero__img {
-                            display: none;
-                        }
-                        /*End Hero */
-                        /*Testimonials*/
-                        .testimonial {
-                            width: 50%;
-                        }
-                        /*End Testimonials*/
-                    }
-                    
-                    @media screen and (max-width:768px) {
-                        /* Opportunities*/
-                        .opportunity {
-                            width: 100%;
-                        }
-                        /*End Opportunities*/
-                        /*How Is Works*/
-                        .form_progressbar {
-                            grid-column-gap: 7rem;
-                            justify-content: center;
-                        }
-                        .progressbar__step {
-                            width: 4.8rem;
-                            height: 4.8rem;
-                            &:not(:first-child) {
-                                &::before,
-                                &::after {
-                                    width: 7rem;
-                                }
-                            }
-                        }
-                        .works__step__content {
-                            flex-direction: column;
-                        }
-                        .works__step_title {
-                            font-size: 2rem;
-                            text-align: center;
-                        }
-                        /*End How Is Works*/
-                        /*Testimonials*/
-                        .testimonials__body {
-                            &::before,
-                            &::after {
-                                background-color: transparent;
-                            }
-                        }
-                        .testimonials__list {
-                            padding-left: 1.5rem;
-                        }
-                        .testimonial {
-                            width: calc(100% - 3rem);
-                            word-wrap: break-word;
-                            &:hover {
-                                transform: initial;
-                            }
-                        }
-                        /*End Testimonials*/
-                    }
-                    
-                    @media screen and (max-width: 500px) {
-                        /*Global*/
-                        .opportunities__title,
-                        .invest__title,
-                        .works__title,
-                        .testimonials__title,
-                        .farm-invest__title {
-                            font-size: 3rem;
-                        }
-                        .invest__description,
-                        .works__description {
-                            font-size: 1.6rem;
-                        }
-                        /*End Global*/
-                        /*Hero*/
-                        .hero__title {
-                            font-size: 3.2rem;
-                        }
-                        /*End Hero*/
-                        /*Opportunities*/
-                        .opportunities__img {
-                            top: -8rem;
-                            img {
-                                max-height: 40rem;
-                                max-width: 10rem;
-                            }
-                        }
-                        .opportunity__icon {
-                            width: inherit;
-                        }
-                        /*End Opportunities*/
-                        /*Invest Section*/
-                        .invest__body {
-                            grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
-                        }
-                        .invest__item__title {
-                            font-size: 2.4rem;
-                        }
-                        /*End Invest Section*/
-                        /*How Is Works*/
-                        .form_progressbar {
-                            grid-column-gap: 4rem;
-                            justify-content: center;
-                        }
-                        .progressbar__step {
-                            width: 4.8rem;
-                            height: 4.8rem;
-                            &:not(:first-child) {
-                                &::before,
-                                &::after {
-                                    width: 4rem;
-                                }
-                            }
-                        }
-                        .works__step_title {
-                            font-size: 1.8rem;
-                        }
-                        /*End How Is Works*/
-                        /*Testimonials*/
-                        .testimonials {
-                            margin-top: 10rem;
-                        }
-                        /*End Testimonials*/
-                    }
-                    
-                    @media screen and (max-width: 360px) {
-                        /*Invest Section*/
-                        .invest__body {
-                            grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-                        }
-                        /*End Invest Section*/
-                        /*How Is Works*/
-                        .progressbar__step {
-                            width: 4rem;
-                            height: 4rem;
-                        }
-                        /*End How Is Works*/
-                        /*Testimonials */
-                        .testimonial__profile {
-                            flex-direction: column;
-                            text-align: center;
-                        }
-                        /*End Testimonials*/
-                        /*Farm Invest*/
-                        .btn__farm--invest {
-                            width: 80%;
-                            min-width: initial;
-                        }
-                        /*End Farm Invest*/
-                    }
+@import "global";
+
+/*Header */
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header__nav {
+    padding: 2rem 1.5rem;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    flex: 2;
+    img {
+        max-width: 12rem;
+    }
+}
+
+.header__nav__content {
+    flex: 8;
+    display: flex;
+    align-items: center;
+    &.open {
+        transform: translateX(0);
+    }
+}
+
+.header__menu {
+    flex: 4;
+    display: flex;
+    grid-gap: 2.5rem;
+}
+
+.menu__link {
+    cursor: pointer;
+    transition: .2s all;
+    &:hover {
+        color: $fern;
+    }
+    &.active {
+        color: $fern;
+        font-weight: bold;
+    }
+}
+
+.header__signup {
+    flex: 4;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn__signup {
+    border: 1px solid $white;
+    font-size: 1.6rem;
+    color: $white;
+    @include btnHoverAnimate(transparent, $fern, $white);
+}
+
+.hamburger-menu-wrap {
+    position: absolute;
+    top: 3rem;
+    right: 2rem;
+    cursor: pointer;
+    z-index: 1;
+    display: none;
+}
+
+.hamburger-menu {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    grid-row-gap: .2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+}
+
+.hamburger-menu .line {
+    background-color: $fern;
+    height: .3rem;
+    width: 100%;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.nav-close-icon {
+    position: relative;
+    padding: 3rem 2rem;
+    height: 2.5rem;
+    cursor: pointer;
+    display: none;
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        width: 4px;
+        right: 4rem;
+        height: 40%;
+        background-color: $white;
+    }
+    &:before {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg) translate(0.5rem, -1rem);
+    }
+    &:after {
+        -webkit-transform: rotateZ(-45deg);
+        transform: rotateZ(-45deg) translate(1rem, 0.5rem);
+    }
+}
+
+
+/*End Header */
+
+
+/*End Hero */
+
+.hero {
+    margin: auto;
+    height: 100vh;
+}
+
+.hero__content {
+    display: flex;
+}
+
+.hero__text {
+    margin-top: 10rem;
+    max-width: 50rem;
+}
+
+.hero__title {
+    font-size: 4.6rem;
+}
+
+.hero__description {
+    font-size: 1.8rem;
+    margin: 2.5rem 0 5rem;
+    color: $outer-space;
+}
+
+.btn__hero {
+    border: 1px solid $fern;
+    color: $white;
+    font-size: 1.8rem;
+    @include btnShadow;
+    @include btnHoverAnimate($fern, $white, $fern)
+}
+
+.hero__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    img {
+        max-height: 100vh;
+        width: initial;
+    }
+}
+
+
+/*End Hero */
+
+
+/*Opportunities*/
+
+.opportunities {
+    position: relative;
+}
+
+.opportunities__img {
+    position: absolute;
+    left: -1.5rem;
+    top: -16rem;
+    z-index: -1;
+    img {
+        max-height: 55rem;
+        max-width: 16rem;
+    }
+}
+
+.opportunities__content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5rem;
+    border-bottom: 2px solid $alabaster;
+    margin-bottom: 4rem;
+}
+
+.opportunities__head {
+    text-align: center;
+    max-width: 70rem;
+    margin: 0 auto 10rem;
+}
+
+.opportunities__title {
+    font-size: 3.6rem;
+    color: $black;
+}
+
+.opportunities__description {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $outer-space;
+}
+
+.opportunities__body {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2.5rem;
+    align-self: baseline;
+}
+
+.opportunity {
+    width: 30%;
+    background-color: $white;
+    border-radius: .5rem;
+    filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+    padding: 5rem 2.5rem 2.5rem;
+    transition: all 0.3s ease-out;
+    &.active {
+        background-color: $fern;
+        .opportunity__title,
+        .opportunity__description {
+            color: $white;
+        }
+    }
+    &:hover {
+        transform: translateY(-2rem);
+    }
+}
+
+.opportunity__icon {
+    max-height: 5.6rem;
+    width: initial;
+}
+
+.opportunity__title {
+    font-size: 1.8rem;
+    color: $outer-space;
+    margin: 2.5rem 0;
+}
+
+.opportunity__description {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $outer-space;
+}
+
+
+/*End Opportunities*/
+
+
+/* Invest*/
+
+.invest {
+    margin: auto;
+}
+
+.invest__head {
+    max-width: 70rem;
+}
+
+.invest__title {
+    font-size: 3.6rem;
+}
+
+.invest__description {
+    margin-top: 1.5rem;
+    color: $limed-spruce;
+    font-size: 1.8rem
+}
+
+.invest__body {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40rem, 1fr));
+    grid-gap: 2.5rem;
+}
+
+.invest__item {
+    padding: 2.5rem;
+    &:nth-child(1) {
+        background: url('../img/investments/invest-1.png') no-repeat center/cover;
+    }
+    &:nth-child(2) {
+        background: url('../img/investments/invest-2.png') no-repeat center/cover;
+    }
+}
+
+.invest__item__subtitle {
+    color: $fern;
+    font-size: 1.4rem;
+    font-weight: 400;
+    position: relative;
+    &::after {
+        position: absolute;
+        content: '';
+        top: 3rem;
+        left: 0;
+        width: 5.6rem;
+        height: 4px;
+        background-color: $white;
+    }
+}
+
+.invest__item__body {
+    margin: 5rem 0 2.5rem;
+}
+
+.invest__item__title {
+    color: $white;
+    font-size: 3.1rem;
+    max-width: 30rem;
+}
+
+.invest__item_description {
+    font-size: 1.6rem;
+    color: $white;
+    max-width: 30rem;
+}
+
+.btn__invest {
+    color: $fern;
+    display: inline-block;
+    width: 20rem;
+    text-align: center;
+    @include btnShadow;
+    @include btnHoverAnimate($white,
+    $fern,
+    $white);
+}
+
+
+/*End Invest*/
+
+
+/*End How Is Works*/
+
+.how-is-works {
+    background: url('../img/how-is-works-bg.png') no-repeat;
+    background-color: $fern;
+    margin: auto;
+}
+
+.works__content {
+    max-width: 70rem;
+    margin: auto;
+    color: $white;
+    padding: 0 1.5rem;
+}
+
+.works__head {
+    text-align: center;
+}
+
+.works__title {
+    font-size: 3.6rem;
+}
+
+.works__description {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 3rem;
+}
+
+.works__body {
+    margin: 5rem 0 10rem;
+}
+
+.form_progressbar {
+    display: flex;
+    grid-column-gap: 13rem;
+}
+
+.progressbar__step {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 7.2rem;
+    height: 7.2rem;
+    border: 1px solid $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &.active {
+        background-color: $white;
+        color: $fern;
+        &:not(:first-child)::after {
+            height: 5px;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: progressBarStepAnimate 0.5s linear forwards;
+        }
+    }
+    &:not(:first-child) {
+        &::before,
+        &::after {
+            position: absolute;
+            content: '';
+            right: 100%;
+            width: 13rem;
+            height: 1px;
+            background-color: $white;
+            pointer-events: none;
+        }
+    }
+}
+
+@keyframes progressBarStepAnimate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.works__footer {
+    display: flex;
+    overflow: hidden;
+}
+
+.works__step__content {
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    grid-gap: 2.5rem;
+    transition: .5s all linear;
+    padding: 3rem;
+    position: relative;
+    align-items: center;
+    &::before {
+        position: absolute;
+        content: '';
+        left: 1.5rem;
+        top: 1.5rem;
+        width: calc(100% - 3rem);
+        height: calc(100% - 3rem);
+        -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 75%);
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 75%);
+        border-radius: .8rem;
+        // background-color: red;
+    }
+}
+
+.works__step_title {
+    font-size: 2.4rem;
+    flex: 5;
+}
+
+.works__step_description {
+    flex: 6;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+
+/*End How Is Works*/
+
+
+/*Testimonials*/
+
+.testimonials {
+    margin-top: 20rem;
+}
+
+.testimonials__head {
+    position: relative;
+    margin: auto;
+}
+
+.testimonials__quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 11rem;
+    width: auto;
+}
+
+.testimonials__title {
+    font-size: 3.6rem;
+    max-width: 45rem;
+}
+
+.testimonials__body {
+    margin: 8rem auto 4rem;
+    width: 100%;
+    overflow: hidden;
+    padding: 2rem 0;
+    position: relative;
+    &::before,
+    &::after {
+        position: absolute;
+        content: '';
+        top: 0;
+        width: 10%;
+        background-color: $white;
+        opacity: .5;
+        height: 100%;
+        z-index: 1;
+    }
+    &::before {
+        left: 0;
+        filter: drop-shadow(5rem 0 4rem $white);
+    }
+    &::after {
+        right: 0;
+        filter: drop-shadow(-5rem 0 4rem $white);
+    }
+}
+
+.testimonials__list {
+    display: flex;
+    grid-gap: 2.5rem;
+    position: relative;
+}
+
+.testimonial {
+    flex-shrink: 0;
+    width: 33%;
+    padding: 2.5rem;
+    background-color: $white;
+    filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+    transition: transform .3s ease;
+    &:hover {
+        transform: scale(1.1);
+        z-index: 1;
+    }
+}
+
+.testimonial__profile {
+    display: flex;
+    grid-gap: 2.5rem;
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.testimonial__img {
+    filter: drop-shadow(0 0 0.5rem $fern);
+    width: 7.2rem;
+    height: 7.2rem;
+    img {
+        width: initial;
+        max-width: initial;
+    }
+}
+
+.testimonial__name {
+    color: $fern;
+}
+
+.testimonial__title {
+    color: $outer-space;
+}
+
+.testimonial__description {
+    margin-top: 5rem;
+    font-size: 1.8rem;
+    color: $limed-spruce;
+}
+
+.testimonials__footer {
+    margin: auto;
+}
+
+.testimonials__directions {
+    display: flex;
+    grid-gap: 1.5rem;
+}
+
+.btn__testimonials {
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 1.5rem;
+    outline: none;
+    border: none;
+    background-color: $fern;
+    color: $white;
+    @include btnShadow;
+    &.disable {
+        background-color: $white;
+        color: $outer-space;
+    }
+}
+
+
+/*End Testimonials*/
+
+
+/*Farm Invest */
+
+.farm-invest {
+    margin: auto;
+    padding: 5rem 2.5rem;
+    text-align: center;
+    background-color: $white;
+    filter: drop-shadow(0 0 0.75rem rgba(27, 31, 35, 0.15));
+    margin-bottom: 10rem;
+}
+
+.farm-invest__title {
+    font-size: 3.6rem;
+    span {
+        color: $fern;
+    }
+}
+
+.btn__farm--invest {
+    border: 1px solid $fern;
+    color: $white;
+    display: inline-block;
+    min-width: 25rem;
+    margin-top: 4rem;
+    @include btnShadow;
+    @include btnHoverAnimate($fern,
+    $white,
+    $fern);
+}
+
+
+/*End Farm Invest*/
+
+
+/*Footer*/
+
+.footer {
+    position: relative;
+}
+
+.footer__body {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 2.5rem;
+    align-items: baseline;
+    padding-bottom: 5rem;
+    border-bottom: 2px solid $alabaster;
+}
+
+.footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 9 2 auto;
+    grid-row-gap: 2.5rem;
+}
+
+.footer_nav__menu {
+    flex-basis: 33%;
+}
+
+.footer_nav__item {
+    padding: 1rem 2.5rem;
+}
+
+.footer_nav__menu__title {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.footer_nav__link {
+    font-size: 1.6rem;
+    color: $lynch;
+    transition: .2s all;
+    &:hover {
+        color: $fern;
+    }
+}
+
+.footer__contact {
+    flex: 1 0 28rem;
+    background-color: $fern;
+    padding: 5rem 5rem 10rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &>* {
+        max-width: 16rem;
+    }
+}
+
+.footer__contact__title {
+    margin-bottom: 1.5rem;
+}
+
+.email {
+    color: $white;
+}
+
+.btn__signin {
+    margin-top: 1.5rem;
+    border: 1px solid $white;
+    color: $fern;
+    @include btnHoverAnimate($white,
+    $fern,
+    $white);
+}
+
+.footer__bottom__content {
+    margin-top: 5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 5rem auto 0;
+    padding-bottom: 10rem;
+}
+
+.footer_copyright {
+    color: $lynch;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.footer_img {
+    position: absolute;
+    bottom: 0;
+    right: -1.5rem;
+    max-width: 50rem;
+}
+
+
+/*End Footer*/
+
+@import 'mediaQueries';

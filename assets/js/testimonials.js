@@ -11,13 +11,13 @@ export default function testimonials() {
     let testimonialsWidth, testimonialWidth;
     let testimonialIndex = 0;
     const gridGap = 25;
-    let nextLimit = getNextLimit();
+    let limit = getLimit();
 
 
     window.addEventListener("resize", () => {
-        nextLimit = getNextLimit();
+        limit = getLimit();
     })
-    checkButtonStatus()
+    checkLimitForBtnStatus()
     nextBtn.addEventListener('click', moveToNextSlide)
     prevBtn.addEventListener('click', moveToPrevSlide)
 
@@ -38,35 +38,21 @@ export default function testimonials() {
 
     const isContinue = (args) => {
         if (args.direction) {
-            if (testimonialIndex < nextLimit) {
-                if (testimonialIndex + 1 < nextLimit) {
-                    nextBtn.classList.remove('disable');
-                } else {
-                    nextBtn.classList.add('disable');
-                }
-                prevBtn.classList.remove('disable');
+            if (testimonialIndex < limit) {
+                checkTestimonialFinish(args.direction, nextBtn, prevBtn)
                 return true;
             } else {
-                nextBtn.classList.add('disable');
-                if (nextLimit != 0) {
-                    prevBtn.classList.remove('disable');
-                }
+                updateBtnStatus(nextBtn, true)
+                updateBtnStatusByLimit(prevBtn)
                 return false;
             }
         } else {
             if (testimonialIndex > 0) {
-                if (testimonialIndex - 1 > 0) {
-                    prevBtn.classList.remove('disable');
-                } else {
-                    prevBtn.classList.add('disable');
-                }
-                nextBtn.classList.remove('disable');
+                checkTestimonialFinish(args.direction, prevBtn, nextBtn)
                 return true;
             } else {
-                prevBtn.classList.add('disable');
-                if (nextLimit != 0) {
-                    nextBtn.classList.remove('disable');
-                }
+                updateBtnStatus(prevBtn, true)
+                updateBtnStatusByLimit(nextBtn)
                 return false;
             }
         }
@@ -78,21 +64,41 @@ export default function testimonials() {
         ]
     }
 
-    function getNextLimit() {
+    function getLimit() {
         [testimonialsWidth, testimonialWidth] = getElementsWidth();
         let testimonialCountPerWrap = testimonialsWidth / testimonialWidth
         return Math.round(testimonials.length - testimonialCountPerWrap)
     }
 
-    function checkButtonStatus() {
-        if (nextLimit == 0) {
+    function checkLimitForBtnStatus() {
+        if (limit == 0) {
             nextBtn.classList.add('disable');
         }
     }
 
+    function updateBtnStatus(btn, status) {
+        if (status) {
+            btn.classList.add('disable')
+        } else {
+            btn.classList.remove('disable')
+        }
+    }
 
+    function checkTestimonialFinish(direction, btn1, btn2) {
+        const status = direction ? (testimonialIndex + 1 < limit) : (testimonialIndex - 1 > 0)
+        if (status) {
+            updateBtnStatus(btn1, false)
+        } else {
+            updateBtnStatus(btn1, true)
+        }
+        updateBtnStatus(btn2, false)
+    }
 
-
+    function updateBtnStatusByLimit(btn) {
+        if (limit != 0) {
+            updateBtnStatus(btn, false)
+        }
+    }
 };
 
 
